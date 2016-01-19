@@ -7,8 +7,8 @@
 (defn init'
   []
   (println (slurp (io/resource "intro.txt")))
-  (use 'rest.public)
-  (in-ns 'rest.public)
+  (in-ns 'user)
+  (require '[rest.public :refer :all]) 
   (require '[com.rpl.specter :refer :all]))
 
 (defn print'
