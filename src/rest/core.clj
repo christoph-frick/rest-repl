@@ -36,10 +36,3 @@
   ([config path]
    (let [next-path (change-dir config path)] 
      (assoc config :current-url next-path))))
-
-(defn debug
-  ([config] 
-   (-> (get-in config [:defaults :debug])
-       boolean))
-  ([config on?] 
-   (assoc-in config [:defaults :debug] (boolean on?)))) 

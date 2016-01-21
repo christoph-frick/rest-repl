@@ -14,17 +14,16 @@
   (-> (swap! config rc/cd path)
       rc/cwd))
 
-(defn debug
-  ([] (rc/debug @config))
-  ([on?] (swap! config rc/debug on?)))
+(defn default
+  [& args]
+  (swap! config assoc-in (into [:defaults] (drop-last args)) (last args)))
 
 (defn request
   ([method body]
    (request method (rc/cwd @config) body))
   ([method path body]
    (let [config @config
-         crequest (merge {:debug (rc/debug config)}
-                         (get config :defaults {})
+         crequest (merge (get config :defaults {})
                          body 
                          {:method method
                           :url (-> (rc/cd config path)
