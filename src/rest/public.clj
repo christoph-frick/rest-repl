@@ -30,8 +30,7 @@
                                    rc/cwd)})] 
      (chttp/request crequest))))
 
-(defn as-json
+(defn json
   [body]
   {:content-type :json 
-   :as :json 
    :body (json-encode body)})

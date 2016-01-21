@@ -4,7 +4,10 @@
 (defn default-config
   []
   {:base-url "http://localhost:8080"
-   :defaults {:debug false}})
+   :defaults {:as :auto
+              :coerce :always
+              :throw-exceptions false
+              :debug false}})
 
 ; TODO: this does not deal with more .. than there is path
 (defn normalize-url
