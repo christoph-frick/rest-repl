@@ -7,4 +7,4 @@
 
 
 Clojure REPL that resembles a shell in regard the current working directory
-being an URL.  Run `(help)`.
+being an URL and allows sending request.
