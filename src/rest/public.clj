@@ -1,5 +1,6 @@
 (ns rest.public
   (:require [rest.core :as rc]
+            [clojure.java.io :as io] 
             [clj-http.client :as chttp :refer [json-encode json-decode]]))
 
 (def config
@@ -34,3 +35,9 @@
   [body]
   {:content-type :json 
    :body (json-encode body)})
+
+(defn help
+  []
+  (println (slurp (io/resource "help.md")))
+  (println "Current config:")
+  @config)
