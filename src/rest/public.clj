@@ -20,8 +20,10 @@
   (swap! config assoc-in (into [:defaults] (drop-last args)) (last args)))
 
 (defn request
-  ([method body]
-   (request method (rc/cwd @config) body))
+  ([method path-or-body]
+   (if (string? path-or-body)
+     (request method path-or-body {})
+     (request method (cwd) path-or-body)))
   ([method path body]
    (let [config @config
          crequest (merge (get config :defaults {})
