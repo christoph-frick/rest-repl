@@ -32,7 +32,7 @@
   {:pre [(string? to)]}
   (-> (cond
         (re-find #"://" to) to
-        (.startsWith to "~") (str (home config) "/" (subs to 1))
+        (str/starts-with? to "~") (str (home config) "/" (subs to 1))
         :else (str (cwd config) "/" to))
       normalize-url))
 
