@@ -44,3 +44,8 @@
   (is (= (:current-url (cd abscfg #"\d+" "5050")) "http://localhost:5050"))  
   (is (= (:current-url (cd relcfg "some" "other")) "http://localhost:8080/other")))
 
+(deftest cwd-tests
+  (is (= (cwd {}) nil))
+  (is (= (cwd abscfg) (:base-url abscfg)))
+  (is (= (cwd relcfg) (:current-url relcfg))))
+
