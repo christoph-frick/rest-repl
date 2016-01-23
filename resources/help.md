@@ -9,6 +9,11 @@ Has all of [specter](https://github.com/nathanmarz/specter) required.
 
   show current config
 
+`(save-config filename)`,
+`(load-config filename)`:
+
+  save/load the current config into/from filename.
+
 `(default k1..kn v)`:
 
   Set an value in config.

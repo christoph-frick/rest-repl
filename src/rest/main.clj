@@ -1,8 +1,7 @@
 (ns rest.main
   (:require [clojure.tools.cli :refer [parse-opts]]
             [clojure.string :as s]
-            [clj-http.client :refer [parse-edn]]
-            [rest.public :refer [config]]
+            [rest.public :refer [config load-config]]
             [rest.repl :as repl])
   (:import [java.io File])
   (:gen-class))
@@ -31,6 +30,6 @@
     (cond
       (:help options) (exit 0 (usage summary))
       errors (exit 1 (error-message (usage summary) errors))
-      (:config-file options) (reset! config (-> options :config-file slurp parse-edn))
+      (:config-file options) (-> options :config-file load-config)
       (seq arguments) (swap! config assoc :base-url (last arguments)))
     (repl/run)))

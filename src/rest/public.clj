@@ -1,6 +1,7 @@
 (ns rest.public
   (:require [rest.core :as rc]
             [clojure.java.io :as io] 
+            [clojure.edn :as edn]
             [clj-http.client :as chttp :refer [json-encode json-decode]]))
 
 (def config
@@ -45,6 +46,14 @@
   [body]
   {:content-type :json 
    :body (json-encode body)})
+
+(defn load-config
+  [filename]
+  (reset! config (-> filename slurp edn/read-string)))
+
+(defn save-config
+  [filename]
+  (spit filename (pr-str @config)))
 
 (defn help
   []
