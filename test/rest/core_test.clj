@@ -38,3 +38,9 @@
   (doseq [[config to result] cd-tests]
     (is (= (:current-url (cd config to)) result))))
 
+(deftest cd-replace-tests
+  (is (= (:current-url (cd abscfg "not-in-there" "alos-not-in-there")) "http://localhost:8080"))  
+  (is (= (:current-url (cd abscfg "8080" "5050")) "http://localhost:5050"))  
+  (is (= (:current-url (cd abscfg #"\d+" "5050")) "http://localhost:5050"))  
+  (is (= (:current-url (cd relcfg "some" "other")) "http://localhost:8080/other")))
+

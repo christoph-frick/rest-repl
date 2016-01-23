@@ -41,4 +41,7 @@
    (cd config (home config)))
   ([config path]
    (let [next-path (change-dir config path)] 
-     (assoc config :current-url next-path))))
+     (assoc config :current-url next-path)))
+  ([config old new]
+   (assoc config :current-url (-> (cwd config)
+                                  (str/replace old new)))))
