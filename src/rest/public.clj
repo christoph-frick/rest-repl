@@ -10,10 +10,18 @@
   []
   (rc/cwd @config))
 
+(defmacro ^:private _cd
+  [& args]
+  `(-> (swap! config rc/cd ~@args)
+       rc/cwd))
+
 (defn cd
-  [path]
-  (-> (swap! config rc/cd path)
-      rc/cwd))
+  ([]
+   (_cd)) 
+  ([path]
+   (_cd path))
+  ([old new]
+   (_cd old new)))
 
 (defn default
   [& args]
