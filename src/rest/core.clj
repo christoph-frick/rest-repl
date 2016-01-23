@@ -1,4 +1,5 @@
 (ns rest.core
+  (:require [clojure.string :as str])
   (:import [java.net URI]))
 
 (defn default-config
@@ -14,7 +15,9 @@
   [url]
   (-> (URI/create url)
       (.normalize)
-      (.toString)))
+      (.toString)
+      ; `..` in normalize remain on first level
+      (str/replace #"\.\./?" "")))
 
 (defn home
   [config]
