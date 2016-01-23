@@ -53,7 +53,9 @@
 
 (defn save-config
   [filename]
-  (spit filename (pr-str @config)))
+  (let [cfg @config] 
+    (spit filename (pr-str cfg))
+    cfg))
 
 (defn help
   []
