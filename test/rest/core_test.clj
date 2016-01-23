@@ -25,10 +25,3 @@
     (doseq [[config to result] tests]
       (is (= (change-dir config to) result)))))
 
-(deftest debug-test
-  (let [config (default-config)
-        tests [[[nil false] false]
-               [[0 1 "" {} true] true]]]
-    (doseq [[values result] tests
-            value values]
-      (is (= (-> (debug config value) debug) result)))))
