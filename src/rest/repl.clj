@@ -1,5 +1,5 @@
 (ns rest.repl
-  (:require [puget.printer :refer [cprint]]
+  (:require [puget.printer :as pp]
             [clojure.main :refer [repl repl-read]]
             [clojure.java.io :as io] 
             [rest.public :refer [cwd]]))
@@ -13,7 +13,7 @@
 
 (defn print'
   [x]
-  (cprint x) 
+  (pp/cprint x) 
   (when *flush-on-newline*
     (flush)))
 
@@ -23,7 +23,16 @@
 
 (defn run
   []
-  (repl 
-   :init init'
-   :prompt prompt'
-   :print print'))
+  (pp/with-options
+    {:color-scheme {:delimiter [:red]
+                    :string nil
+                    :character nil
+                    :keyword [:yellow]
+                    :symbol [:magenta]
+                    :function-symbol [:bold :magenta]
+                    :class-delimiter [:magenta]
+                    :class-name [:bold :magenta]}}
+    (repl 
+      :init init'
+      :prompt prompt'
+      :print print')))
