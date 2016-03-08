@@ -26,8 +26,10 @@
    (_cd old new)))
 
 (defn default
-  [& args]
-  (swap! config assoc-in (into [:defaults] (drop-last args)) (last args)))
+  ([]
+   @config)
+  ([& args] 
+   (swap! config assoc-in (into [:defaults] (drop-last args)) (last args))))
 
 (defn request
   ([method path-or-body]
