@@ -9,7 +9,10 @@
   (println (slurp (io/resource "intro.txt")))
   (in-ns 'user)
   (require '[rest.public :refer :all]) 
-  (require '[com.rpl.specter :refer :all]))
+  (require '[com.rpl.specter :refer :all]) 
+  (require '[clojure.string :as str]) 
+  (require '[cheshire.core :as json]) 
+  (require '[clojure.data.xml :as xml]))
 
 (defn print'
   [x]
