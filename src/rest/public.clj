@@ -43,6 +43,14 @@
                                    rc/cwd)})] 
      (chttp/request crequest))))
 
+(defn GET 
+  ([path-or-body] (request :get path-or-body))
+  ([path body] (request :get path body)))
+
+(defn POST 
+  ([path-or-body] (request :post path-or-body))
+  ([path body] (request :post path body)))
+
 (defn json
   [body]
   {:content-type :json 
