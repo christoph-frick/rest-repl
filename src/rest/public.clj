@@ -2,7 +2,8 @@
   (:require [rest.core :as rc]
             [clojure.java.io :as io] 
             [clojure.edn :as edn]
-            [clj-http.client :as chttp :refer [json-encode json-decode]]))
+            [clj-http.client :as chttp :refer [json-encode json-decode]]
+            [clojure.data.xml :as xml]))
 
 (def config
   (atom (rc/default-config)))
@@ -46,6 +47,11 @@
   [body]
   {:content-type :json 
    :body (json-encode body)})
+
+(defn xml
+  [body]
+  {:content-type :xml 
+   :body (-> body xml/sexp-as-element xml/emit-str)})
 
 (defn load-config
   [filename]
