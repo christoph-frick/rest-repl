@@ -17,6 +17,7 @@ Uses:
 
 - [clj-http](https://github.com/dakrone/clj-http) to handle HTTP
 - [cheshire](https://github.com/dakrone/cheshire) to handle JSON
+- [data.xml](https://github.com/clojure/data.xml) to handle XML
 - [specter](https://github.com/nathanmarz/specter) injected
   automatically to handle nested data
 - [puget](https://github.com/greglook/puget) for colored output
