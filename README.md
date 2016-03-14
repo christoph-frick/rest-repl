@@ -11,6 +11,8 @@ Ideally started with:
 
     rlwrap -m -M .clj java -jar target/rest-repl-*-standalone.jar
 
+![screenshot](doc/restrepl.png)
+
 Uses:
 
 - [clj-http](https://github.com/dakrone/clj-http) to handle HTTP
