@@ -11,6 +11,8 @@ Ideally started with:
 
     rlwrap -m -M .clj java -jar target/rest-repl-*-standalone.jar
 
+[See the help](resources/help.md)
+
 ![screenshot](doc/restrepl.png)
 
 Uses:
@@ -22,4 +24,3 @@ Uses:
   automatically to handle nested data
 - [puget](https://github.com/greglook/puget) for colored output
 
-[See the help](resources/help.md)
