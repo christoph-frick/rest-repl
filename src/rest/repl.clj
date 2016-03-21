@@ -25,7 +25,7 @@
   (printf "%s => " (cwd)))
 
 (defn run
-  []
+  [init-script]
   (pp/with-options
     {:color-scheme {:delimiter [:red]
                     :string nil
@@ -36,6 +36,9 @@
                     :class-delimiter [:magenta]
                     :class-name [:bold :magenta]}}
     (repl 
-      :init init'
-      :prompt prompt'
-      :print print')))
+     :init #(do
+              (init') 
+              (when init-script 
+                (load-file init-script)))
+     :prompt prompt'
+     :print print')))
