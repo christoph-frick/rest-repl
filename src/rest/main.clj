@@ -7,7 +7,7 @@
   (:gen-class))
 
 (def ^:const cli-options
-  [["-c" "--config-file config.edn" "Config file to use for @config"
+  [["-c" "--config config.edn" "Config file to use for @config"
     :validate [#(.exists (File. %)) "file must exist"]]
    ["-i" "--init script.clj" "Run the given file"
     :validate [#(.exists (File. %)) "file must exist"]]
