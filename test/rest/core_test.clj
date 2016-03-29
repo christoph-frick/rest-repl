@@ -27,7 +27,7 @@
                [relcfg "~/subdir" "http://localhost:8080/subdir"]
                [relcfg "http://localhost:5050" "http://localhost:5050"]])
 
-(deftest chane-dir-tests ; gentest?
+(deftest change-dir-tests ; gentest?
   (doseq [[config to result] cd-tests]
     (is (= (change-dir config to) result))))
 
@@ -40,7 +40,7 @@
     (is (= (:current-url (cd config to)) result))))
 
 (deftest cd-replace-tests
-  (is (= (:current-url (cd abscfg "not-in-there" "alos-not-in-there")) "http://localhost:8080"))  
+  (is (= (:current-url (cd abscfg "not-in-there" "also-not-in-there")) "http://localhost:8080"))  
   (is (= (:current-url (cd abscfg "8080" "5050")) "http://localhost:5050"))  
   (is (= (:current-url (cd abscfg #"\d+" "5050")) "http://localhost:5050"))  
   (is (= (:current-url (cd relcfg "some" "other")) "http://localhost:8080/other")))
