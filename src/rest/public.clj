@@ -29,7 +29,7 @@
   ([]
    @config)
   ([& args] 
-   (swap! config assoc-in (into [:defaults] (drop-last args)) (last args))))
+   (swap! config #(apply rc/set-default % args))))
 
 (defn request
   ([method path-or-body]

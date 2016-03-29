@@ -10,6 +10,10 @@
               :throw-exceptions false
               :debug false}})
 
+(defn set-default
+  [config & args]
+  (assoc-in config (into [:defaults] (drop-last args)) (last args)))
+
 ; TODO: this does not deal with more .. than there is path
 (defn normalize-url
   [url]

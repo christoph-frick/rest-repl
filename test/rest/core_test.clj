@@ -2,6 +2,19 @@
   (:require [clojure.test :refer :all]
             [rest.core :refer :all]))
 
+(deftest default-config-tests
+  (is (string? (:base-url (default-config)))) 
+  (is (map? (:defaults (default-config)))))
+
+(deftest set-default-tests
+  (is (= {} (:defaults (set-default (default-config) {}))))
+  (is (= true
+         (get-in (set-default (default-config) :debug true)
+                 [:defaults :debug])))
+  (is (= "something" 
+         (get-in (set-default (default-config) :headers "X-Auth-Token" "something")  
+                 [:defaults :headers "X-Auth-Token"]))))
+
 (def abscfg {:base-url "http://localhost:8080"})
 
 (def relcfg {:base-url "http://localhost:8080" :current-url "http://localhost:8080/some"})
