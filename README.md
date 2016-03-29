@@ -9,7 +9,7 @@ being an URL and allows sending request.
 
 Ideally started with:
 
-    rlwrap -m -M .clj java -jar target/rest-repl-*-standalone.jar
+    rlwrap -m -M .clj -C rest-repl java -jar target/rest-repl-*-standalone.jar
 
 [See the help](resources/help.md)
 
