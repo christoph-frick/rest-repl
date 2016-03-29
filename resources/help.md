@@ -34,3 +34,7 @@ has `clojure.string` as `str`,
   optional `(cd ?path)`) with the map as request.  The current defaults from
   the config get merged with it.  `GET` and `POST` are shortcuts for `request
   (:get|:post)`.
+
+`(xml [...])`, `(json ...)`:
+
+  Helper to generate a XML or JSON body.
