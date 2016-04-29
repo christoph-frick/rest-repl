@@ -63,16 +63,6 @@
   {:content-type :xml 
    :body (-> body xml/sexp-as-element xml/emit-str)})
 
-(defn load-config
-  [filename]
-  (reset! config (-> filename slurp edn/read-string)))
-
-(defn save-config
-  [filename]
-  (let [cfg @config] 
-    (spit filename (pr-str cfg))
-    cfg))
-
 (defn help
   []
   (println (slurp (io/resource "help.md")))

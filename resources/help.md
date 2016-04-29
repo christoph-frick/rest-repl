@@ -12,11 +12,6 @@ has `clojure.string` as `str`,
 
   show current config
 
-`(save-config filename)`,
-`(load-config filename)`:
-
-  save/load the current config into/from filename.
-
 `(default k1..kn v)`:
 
   Set an value in config. (e.g. `(default :headers "Token" "sometoken")`

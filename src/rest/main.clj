@@ -1,15 +1,13 @@
 (ns rest.main
   (:require [clojure.tools.cli :refer [parse-opts]]
             [clojure.string :as s]
-            [rest.public :refer [config load-config]]
+            [rest.public :refer [config]]
             [rest.repl :as repl])
   (:import [java.io File])
   (:gen-class))
 
 (def ^:const cli-options
-  [["-c" "--config config.edn" "Config file to use for @config"
-    :validate [#(.exists (File. %)) "file must exist"]]
-   ["-i" "--init script.clj" "Run the given file"
+  [["-i" "--init script.clj" "Run the given file before the first prompt"
     :validate [#(.exists (File. %)) "file must exist"]]
    ["-h" "--help"]])
 
@@ -32,6 +30,5 @@
     (cond
       (:help options) (exit 0 (usage summary))
       errors (exit 1 (error-message (usage summary) errors))
-      (:config-file options) (-> options :config-file load-config)
       (seq arguments) (swap! config assoc :base-url (last arguments)))
     (repl/run (:init options))))
