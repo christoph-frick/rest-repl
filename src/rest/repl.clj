@@ -12,7 +12,8 @@
   (require '[com.rpl.specter :refer :all]) 
   (require '[clojure.string :as str]) 
   (require '[cheshire.core :as json]) 
-  (require '[clojure.data.xml :as xml]))
+  (require '[clojure.data.xml :as xml])
+  (require '[clojure.repl :use [source doc]]))
 
 (defn print'
   [x]
