@@ -11,9 +11,19 @@ Ideally started with:
 
     rlwrap -m -M .clj -C rest-repl java -jar target/rest-repl-*-standalone.jar
 
-[See the help](resources/help.md)
+Command line params:
+
+    rest-repl [options...] [url]
+    
+      -i, --init script.clj  Run the given file before the first prompt
+      -h, --help
+
+On the prompt call `(help)` for the functions available (also
+[here](resources/help.md))
+
 
 ![screenshot](doc/restrepl.png)
+
 
 Uses:
 
