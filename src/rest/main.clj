@@ -9,6 +9,7 @@
 (def ^:const cli-options
   [["-i" "--init script.clj" "Run the given file before the first prompt"
     :validate [#(.exists (File. %)) "file must exist"]]
+   ["-e" "--eval string" "Evaluate the expression (after --init if both given)"] 
    ["-h" "--help"]])
 
 (defn usage
@@ -31,4 +32,4 @@
       (:help options) (exit 0 (usage summary))
       errors (exit 1 (error-message (usage summary) errors))
       (seq arguments) (swap! config assoc :base-url (last arguments)))
-    (repl/run (:init options))))
+    (repl/run (:init options) (:eval options))))

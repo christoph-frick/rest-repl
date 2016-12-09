@@ -26,7 +26,7 @@
   (printf "%s => " (cwd)))
 
 (defn run
-  [init-script]
+  [init-script eval-string]
   (pp/with-options
     {:color-scheme {:delimiter [:red]
                     :string nil
@@ -40,6 +40,10 @@
      :init #(do
               (init') 
               (when init-script 
-                (load-file init-script)))
+                (load-file init-script))
+              (when eval-string
+                (when-let [result (eval (read-string eval-string))]
+                  (print' result )))
+              nil)
      :prompt prompt'
      :print print')))
