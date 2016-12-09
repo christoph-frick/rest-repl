@@ -1,6 +1,6 @@
 (defproject rest-repl "0.2.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [clj-http "3.3.0"]
+                 [clj-http "3.4.1"]
                  [mvxcvi/puget "1.0.1"]
                  [com.rpl/specter "0.13.1"]
                  [cheshire "5.6.3"]
