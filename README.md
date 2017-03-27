@@ -25,7 +25,14 @@ On the prompt call `(help)` for the functions available (also
 ![screenshot](doc/restrepl.png)
 
 
-Uses:
+Examples
+--------
+
+[How to use the REST-REPL for generative testing with `clojure.spec`](doc/testing.md)
+
+
+Uses
+----
 
 - [clj-http](https://github.com/dakrone/clj-http) to handle HTTP
 - [cheshire](https://github.com/dakrone/cheshire) to handle JSON
