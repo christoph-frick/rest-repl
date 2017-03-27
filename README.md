@@ -9,7 +9,7 @@ being an URL and allows sending request.
 
 Ideally started with:
 
-    rlwrap -m -M .clj -C rest-repl java -jar target/rest-repl-*-standalone.jar
+    rlwrap -m -M .clj -C rest-repl -H "`pwd`/.rest-repl_history" java -jar target/rest-repl-*-standalone.jar
 
 Command line params:
 
