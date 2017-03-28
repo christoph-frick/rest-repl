@@ -17,7 +17,7 @@ ratpack {
 			render(parse(fromJson(User)).map{ User u ->
 				if (u.username && u.password) {
 					// artificial error
-					assert u.password.size() < 16
+					assert u.password.size() < 17
 					return json(u)
 				} else {
 					response.status(400)

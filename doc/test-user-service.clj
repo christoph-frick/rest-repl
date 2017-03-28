@@ -1,7 +1,7 @@
 (require '[clojure.spec :as s])
 (require '[clojure.spec.test :as stest])
 
-(s/def ::not-empty-string (s/and string? #(< 1 (count %))))
+(s/def ::not-empty-string (s/and string? seq))
 (s/def ::username ::not-empty-string)
 (s/def ::password ::not-empty-string)
 
