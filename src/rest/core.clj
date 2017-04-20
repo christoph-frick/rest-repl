@@ -31,11 +31,15 @@
   [config]
   (get config :current-url (:base-url config)))
 
+(defn absolute-url?
+  [url]
+  (some? (re-find #"://" url)))
+
 (defn change-dir ; very naive
   [config to]
   {:pre [(string? to)]}
   (-> (cond
-        (re-find #"://" to) to
+        (absolute-url? to) to
         (str/starts-with? to "~") (str (home config) "/" (subs to 1))
         :else (str (cwd config) "/" to))
       normalize-url))
@@ -44,8 +48,13 @@
   ([config]
    (cd config (home config)))
   ([config path]
-   (let [next-path (change-dir config path)] 
-     (assoc config :current-url next-path)))
+   (if (absolute-url? path)
+     (assoc config
+            :current-url path
+            :base-url path)
+     (let [next-path (change-dir config path)]
+       (assoc config
+              :current-url next-path))))
   ([config old new]
    (assoc config :current-url (-> (cwd config)
                                   (str/replace old new)))))

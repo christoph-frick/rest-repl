@@ -52,6 +52,12 @@
   (doseq [[config to result] cd-tests]
     (is (= (:current-url (cd config to)) result))))
 
+(deftest cd-absolute-url-changes-base
+  (let [abs-url "http://example.com"
+        {:keys [current-url base-url]} (cd abscfg abs-url)]
+    (is (and (= current-url abs-url)
+             (= base-url abs-url)))))
+
 (deftest cd-replace-tests
   (is (= (:current-url (cd abscfg "not-in-there" "also-not-in-there")) "http://localhost:8080"))  
   (is (= (:current-url (cd abscfg "8080" "5050")) "http://localhost:5050"))  
