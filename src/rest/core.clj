@@ -38,11 +38,10 @@
 (defn change-dir ; very naive
   [config to]
   {:pre [(string? to)]}
-  (-> (cond
-        (absolute-url? to) to
-        (str/starts-with? to "~") (str (home config) "/" (subs to 1))
-        :else (str (cwd config) "/" to))
-      normalize-url))
+  (normalize-url (cond
+                   (absolute-url? to) to
+                   (str/starts-with? to "~") (str (home config) "/" (subs to 1))
+                   :else (str (cwd config) "/" to))))
 
 (defn cd
   ([config]
@@ -56,5 +55,4 @@
        (assoc config
               :current-url next-path))))
   ([config old new]
-   (assoc config :current-url (-> (cwd config)
-                                  (str/replace old new)))))
+   (assoc config :current-url (str/replace (cwd config) old new))))
