@@ -1,5 +1,5 @@
-(require '[clojure.spec :as s])
-(require '[clojure.spec.test :as stest])
+(require '[clojure.spec.alpha :as s])
+(require '[clojure.spec.test.alpha :as stest])
 
 (s/def ::not-empty-string (s/and string? seq))
 (s/def ::username ::not-empty-string)
