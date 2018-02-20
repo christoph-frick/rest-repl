@@ -45,13 +45,23 @@
                                    rc/cwd)})] 
      (chttp/request crequest))))
 
+; TODO: make that a macro
+
 (defn GET 
   ([path-or-body] (request :get path-or-body))
-  ([path body] (request :get path body)))
+  ([path body]    (request :get path body)))
 
 (defn POST 
   ([path-or-body] (request :post path-or-body))
-  ([path body] (request :post path body)))
+  ([path body]    (request :post path body)))
+
+(defn PUT
+  ([path-or-body] (request :put path-or-body))
+  ([path body]    (request :put path body)))
+
+(defn DELETE
+  ([path-or-body] (request :delete path-or-body))
+  ([path body]    (request :delete path body)))
 
 (defn json
   [body]

@@ -27,8 +27,8 @@ has `clojure.string` as `str`,
 
   Send a request with the method kw via `clj-http` to the current URL (with
   optional `(cd ?path)`) with the map as request.  The current defaults from
-  the config get merged with it.  `GET` and `POST` are shortcuts for `request
-  (:get|:post)`.
+  the config get merged with it.  `GET`, `POST`, `PUT`, `DELETE` are shortcuts
+  for `request (:get|:post|:put|:delete)`.
 
 `(xml [...])`, `(json ...)`:
 

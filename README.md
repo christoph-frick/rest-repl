@@ -152,8 +152,8 @@ when used with `cd`, but only for that request.  Finally a map get's
 passed, that is the request as defined in 
 [`clj-http`](https://github.com/dakrone/clj-http/blob/master/README.org).
 
-There are shortcut functions for `GET` and `POST` (so `(GET ...)` is the
-shortcut for `(request :get ...)`.
+There are shortcut functions for `GET`, `POST`, `PUT`, `DELETE` (so `(GET ...)`
+is the shortcut for `(request :get ...)`.
 
 ```
 https://google.com => (GET {})
