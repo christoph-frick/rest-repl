@@ -1,18 +1,18 @@
-(ns rest.core-test
+(ns stateful-clj-http.client-test
   (:require [clojure.test :refer :all]
-            [rest.core :refer :all]))
+            [stateful-clj-http.client :refer :all]))
 
 (deftest default-config-tests
-  (is (string? (:base-url (default-config)))) 
-  (is (map? (:request (default-config)))))
+  (is (string? (:base-url default-config)))
+  (is (map? (:request default-config))))
 
 (deftest set-default-tests
-  (is (= {} (:request (set-default (default-config) {}))))
+  (is (= {} (:request (set-default default-config {}))))
   (is (= true
-         (get-in (set-default (default-config) :debug true)
+         (get-in (set-default default-config :debug true)
                  [:request :debug])))
-  (is (= "something" 
-         (get-in (set-default (default-config) :headers "X-Auth-Token" "something")  
+  (is (= "something"
+         (get-in (set-default default-config :headers "X-Auth-Token" "something")
                  [:request :headers "X-Auth-Token"]))))
 
 (def abscfg {:base-url "http://localhost:8080"})

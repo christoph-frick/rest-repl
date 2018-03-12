@@ -1,21 +1,20 @@
 (ns rest.public
-  (:require [rest.core :as rc]
-            [clojure.java.io :as io] 
-            [clojure.edn :as edn]
-            [clj-http.client :as chttp :refer [json-encode json-decode]]
-            [clojure.data.xml :as xml]))
+  (:require [clj-http.client :as http-client]
+            [clojure.data.xml :as xml]
+            [clojure.java.io :as io]
+            [stateful-clj-http.client :as client]))
 
 (def config
-  (atom (rc/default-config)))
+  (atom client/default-config))
 
 (defn cwd
   []
-  (rc/cwd @config))
+  (client/cwd @config))
 
 (defmacro ^:private _cd
   [& args]
-  `(-> (swap! config rc/cd ~@args)
-       rc/cwd))
+  `(-> (swap! config client/cd ~@args)
+       client/cwd))
 
 (defn cd
   ([]
@@ -29,49 +28,44 @@
   ([]
    @config)
   ([& args] 
-   (swap! config #(apply rc/set-default % args))))
+   (swap! config #(apply client/set-default % args))))
 
 (defn request
-  ([method path-or-body]
-   (if (string? path-or-body)
-     (request method path-or-body {})
-     (request method (cwd) path-or-body)))
-  ([method path body]
-   (let [config @config
-         crequest (merge (get config :request {})
-                         body 
-                         {:method method
-                          :url (-> (rc/cd config path)
-                                   rc/cwd)})] 
-     (chttp/request crequest))))
+  ([method]              (client/request @config method))
+  ([method path]         (client/request @config method path))
+  ([method path request] (client/request @config method path request)))
 
-; TODO: make that a macro
+; TODO: make them a macro
 
-(defn GET 
-  ([path-or-body] (request :get path-or-body))
-  ([path body]    (request :get path body)))
+(defn GET
+  ([]          (request :get))
+  ([path]      (request :get path))
+  ([path body] (request :get path body)))
 
-(defn POST 
-  ([path-or-body] (request :post path-or-body))
-  ([path body]    (request :post path body)))
+(defn POST
+  ([]          (request :post))
+  ([path]      (request :post path))
+  ([path body] (request :post path body)))
 
 (defn PUT
-  ([path-or-body] (request :put path-or-body))
-  ([path body]    (request :put path body)))
+  ([]          (request :put))
+  ([path]      (request :put path))
+  ([path body] (request :put path body)))
 
 (defn DELETE
-  ([path-or-body] (request :delete path-or-body))
-  ([path body]    (request :delete path body)))
+  ([]          (request :delete))
+  ([path]      (request :delete path))
+  ([path body] (request :delete path body)))
 
 (defn json
   [body]
   {:content-type :json 
-   :body (json-encode body)})
+   :body  (http-client/json-encode body)})
 
 (defn xml
   [body]
   {:content-type :xml 
-   :body (-> body xml/sexp-as-element xml/emit-str)})
+   :body  (-> body xml/sexp-as-element xml/emit-str)})
 
 (defn help
   []
