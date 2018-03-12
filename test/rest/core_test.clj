@@ -4,16 +4,16 @@
 
 (deftest default-config-tests
   (is (string? (:base-url (default-config)))) 
-  (is (map? (:defaults (default-config)))))
+  (is (map? (:request (default-config)))))
 
 (deftest set-default-tests
-  (is (= {} (:defaults (set-default (default-config) {}))))
+  (is (= {} (:request (set-default (default-config) {}))))
   (is (= true
          (get-in (set-default (default-config) :debug true)
-                 [:defaults :debug])))
+                 [:request :debug])))
   (is (= "something" 
          (get-in (set-default (default-config) :headers "X-Auth-Token" "something")  
-                 [:defaults :headers "X-Auth-Token"]))))
+                 [:request :headers "X-Auth-Token"]))))
 
 (def abscfg {:base-url "http://localhost:8080"})
 

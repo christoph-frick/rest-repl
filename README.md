@@ -88,26 +88,26 @@ reviewed with `@config`:
 ```
 http://localhost:8080 => @config
 {:base-url "http://localhost:8080",
- :defaults {:as :auto, :coerce :always, :debug false, :throw-exceptions false}}
+ :request {:as :auto, :coerce :always, :debug false, :throw-exceptions false}}
 ```
 
-`:base-url` is the URL the application started at.  `:defaults` holds a map,
+`:base-url` is the URL the application started at.  `:request` holds a map,
 that is used for each request to be merged with the user input.  The
 available options are documented in the 
 [`clj-http` README](https://github.com/dakrone/clj-http/blob/master/README.org).
 
-The defaults on startup are chosen to allow for some smooth usage for
-the standard use cases.  They can be changed with the `default`
+The default request `:request` on startup is chosen to allow for some smooth
+usage for the standard use cases.  They can be changed with the `default`
 function.  It takes keys as varargs and finally the value to set it.
 E.g.
 
 ```
 http://localhost:8080 => (default :debug true)
 {:base-url "http://localhost:8080",
- :defaults {:as :auto, :coerce :always, :debug true, :throw-exceptions false}}
+ :request {:as :auto, :coerce :always, :debug true, :throw-exceptions false}}
 http://localhost:8080 => (default :headers "X-Auth-Token" "XYZ")
 {:base-url "http://localhost:8080",
- :defaults {:as :auto,
+ :request {:as :auto,
             :coerce :always,
             :debug true,
             :headers {"X-Auth-Token" "XYZ"},

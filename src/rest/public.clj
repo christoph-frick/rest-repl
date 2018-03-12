@@ -38,7 +38,7 @@
      (request method (cwd) path-or-body)))
   ([method path body]
    (let [config @config
-         crequest (merge (get config :defaults {})
+         crequest (merge (get config :request {})
                          body 
                          {:method method
                           :url (-> (rc/cd config path)

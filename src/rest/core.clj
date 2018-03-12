@@ -5,14 +5,14 @@
 (defn default-config
   []
   {:base-url "http://localhost:8080"
-   :defaults {:as :auto
+   :request {:as :auto
               :coerce :always
               :throw-exceptions false
               :debug false}})
 
 (defn set-default
   [config & args]
-  (assoc-in config (into [:defaults] (drop-last args)) (last args)))
+  (assoc-in config (into [:request] (drop-last args)) (last args)))
 
 ; TODO: this does not deal with more .. than there is path
 (defn normalize-url
