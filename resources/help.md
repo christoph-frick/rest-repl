@@ -18,10 +18,10 @@ has `clojure.string` as `str`,
 
 `(cd <path>)` or `(cd <old> <new>)`:
 
-  Change current working URL; If absolute replace the current one.  If
-  starting with `~` use the `base-url` as home.  Otherwise go down deeper.  If
-  two params are passed, any occurence of `<old>` in the current URL will be
-  replaced with `<new>`.
+  Change current working URL; If absolute replace the current one.  If it's a
+  single `-`, then go back to the previous URL. If starting with `~` use the
+  `base-url` as home.  Otherwise go down deeper.  If two params are passed, any
+  occurence of `<old>` in the current URL will be replaced with `<new>`.
 
 `(request <:get|:post|...> <?path> {...})`:
 

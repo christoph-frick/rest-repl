@@ -11,6 +11,10 @@
   []
   (client/pwd @config))
 
+(defn old-pwd
+  []
+  (client/old-pwd @config))
+
 (defmacro ^:private _cd
   [& args]
   `(-> (swap! config client/cd ~@args)

@@ -69,3 +69,11 @@
   (is (= (home {}) nil))
   (is (= (home abscfg) (:base-url abscfg)))
   (is (= (home relcfg) (:base-url relcfg))))
+
+(deftest old-pwd-tests
+  (is (= (old-pwd {}) nil))
+  (is (= (old-pwd abscfg) (:current-url abscfg)))
+  (let [cd-ed (cd abscfg "/some/url")
+        back (cd cd-ed "-")]
+    (is (= (pwd cd-ed) (old-pwd back)))
+    (is (= (pwd back) (old-pwd cd-ed)))))
