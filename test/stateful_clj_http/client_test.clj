@@ -60,10 +60,10 @@
     abscfg [#"\d+" "5050"] "http://localhost:5050"
     relcfg ["some" "other"] "http://localhost:8080/other"))
 
-(deftest cwd-tests
-  (is (= (cwd {}) nil))
-  (is (= (cwd abscfg) (:base-url abscfg)))
-  (is (= (cwd relcfg) (:current-url relcfg))))
+(deftest pwd-tests
+  (is (= (pwd {}) nil))
+  (is (= (pwd abscfg) (:base-url abscfg)))
+  (is (= (pwd relcfg) (:current-url relcfg))))
 
 (deftest home-tests
   (is (= (home {}) nil))

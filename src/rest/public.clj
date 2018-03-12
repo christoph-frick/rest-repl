@@ -7,14 +7,14 @@
 (def config
   (atom client/default-config))
 
-(defn cwd
+(defn pwd
   []
-  (client/cwd @config))
+  (client/pwd @config))
 
 (defmacro ^:private _cd
   [& args]
   `(-> (swap! config client/cd ~@args)
-       client/cwd))
+       (client/pwd)))
 
 (defn cd
   ([]

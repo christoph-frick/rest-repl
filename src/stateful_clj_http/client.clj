@@ -36,7 +36,7 @@
   [config]
   (get config :base-url))
 
-(defn cwd
+(defn pwd
   "The current url in the config"
   [config]
   (get config :current-url (:base-url config)))
@@ -48,14 +48,14 @@
   (normalize-url (cond
                    (absolute-url? to) to
                    (str/starts-with? to "~") (str (home config) "/" (subs to 1))
-                   :else (str (cwd config) "/" to))))
+                   :else (str (pwd config) "/" to))))
 
 (defn cd
   "Change directory in the config.
 
    - with no param given, jump back to what is considered home
    - given a path, change relative or absolute URL
-   - with two params replace any occurence of the first argument in the cwd with the second"
+   - with two params replace any occurence of the first argument in the pwd with the second"
   ([config]
    (cd config (home config)))
   ([config path]
@@ -67,12 +67,12 @@
        (assoc config
               :current-url next-path))))
   ([config old new]
-   (assoc config :current-url (str/replace (cwd config) old new))))
+   (assoc config :current-url (str/replace (pwd config) old new))))
 
 (defn request
   "Same as clj-http.client/request, but using the passed in config for URL and body transformation"
   ([config method]
-   (request config method (cwd config) {}))
+   (request config method (pwd config) {}))
   ([config method path]
    (request config method path {}))
   ([config method path request]
@@ -81,5 +81,5 @@
                    default-request
                    request
                    {:method method
-                    :url (-> config (cd path) (cwd))})]
+                    :url (-> config (cd path) (pwd))})]
      (http-client/request crequest))))

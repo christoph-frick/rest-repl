@@ -2,7 +2,7 @@
   (:require [puget.printer :as pp]
             [clojure.main :refer [repl repl-read]]
             [clojure.java.io :as io] 
-            [rest.public :refer [cwd]]))
+            [rest.public :refer [pwd]]))
 
 (defn init'
   []
@@ -23,7 +23,7 @@
 
 (defn- prompt'
   []
-  (printf "%s => " (cwd)))
+  (printf "%s => " (pwd)))
 
 (defn run
   [init-script eval-string]
