@@ -1,7 +1,7 @@
 (ns rest.main
   (:require [clojure.tools.cli :refer [parse-opts]]
             [clojure.string :as s]
-            [rest.public :refer [config]]
+            [rest.public :refer [cd]]
             [rest.repl :as repl])
   (:import [java.io File])
   (:gen-class))
@@ -31,5 +31,5 @@
     (cond
       (:help options) (exit 0 (usage summary))
       errors (exit 1 (error-message (usage summary) errors))
-      (seq arguments) (swap! config assoc :base-url (last arguments)))
+      (seq arguments) (cd (last arguments)))
     (repl/run (:init options) (:eval options))))
