@@ -64,3 +64,8 @@
   (is (= (cwd {}) nil))
   (is (= (cwd abscfg) (:base-url abscfg)))
   (is (= (cwd relcfg) (:current-url relcfg))))
+
+(deftest home-tests
+  (is (= (home {}) nil))
+  (is (= (home abscfg) (:base-url abscfg)))
+  (is (= (home relcfg) (:base-url relcfg))))
