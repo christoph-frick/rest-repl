@@ -6,6 +6,7 @@
                  [com.rpl/specter "1.1.0"]
                  [cheshire "5.8.0"]
                  [org.clojure/data.xml "0.0.8"]
-                 [org.clojure/tools.cli "0.3.5"]]
+                 [org.clojure/tools.cli "0.3.5"]
+                 [net.ofnir/relative-clj-http "0.1.0"]]
   :main rest.main
   :profiles {:uberjar {:aot :all}})

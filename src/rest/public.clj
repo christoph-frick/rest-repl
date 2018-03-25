@@ -2,7 +2,7 @@
   (:require [clj-http.client :as http-client]
             [clojure.data.xml :as xml]
             [clojure.java.io :as io]
-            [stateful-clj-http.client :as client]))
+            [relative-clj-http.client :as client]))
 
 (def config
   (atom client/default-config))
