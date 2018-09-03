@@ -1,12 +1,10 @@
-(defproject rest-repl "0.2.0"
+(defproject net.ofnir/rest-repl "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/test.check "0.9.0"]
-                 [clj-http "3.8.0"]
-                 [mvxcvi/puget "1.0.2"]
-                 [com.rpl/specter "1.1.0"]
-                 [cheshire "5.8.0"]
-                 [org.clojure/data.xml "0.0.8"]
-                 [org.clojure/tools.cli "0.3.5"]
-                 [net.ofnir/relative-clj-http "0.1.0"]]
-  :main rest.main
+                 [net.ofnir/wrepl "0.1.0-SNAPSHOT"]
+                 [net.ofnir/wrepl.puget "0.1.0-SNAPSHOT"]
+                 [net.ofnir/wrepl.pomegranate "0.1.0-SNAPSHOT"] 
+                 [net.ofnir/wrepl.rebel-readline "0.1.0-SNAPSHOT"] 
+                 [net.ofnir/wrepl.relative-clj-http "0.1.0-SNAPSHOT"]]
+  :main ^:skip-aot wrepl.main
+  :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
