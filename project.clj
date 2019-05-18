@@ -5,6 +5,6 @@
                  [net.ofnir/wrepl.pomegranate "0.1.0-SNAPSHOT"] 
                  [net.ofnir/wrepl.rebel-readline "0.1.0-SNAPSHOT"] 
                  [net.ofnir/wrepl.relative-clj-http "0.1.0-SNAPSHOT"]]
-  :main ^:skip-aot wrepl.main
+  :main ^:skip-aot rest-repl.main
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
