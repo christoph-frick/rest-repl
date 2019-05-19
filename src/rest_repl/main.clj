@@ -5,5 +5,5 @@
 
 (defn -main
   [& args]
-  (binding [wrepl.config/*default-config-filename* ".rest-repl.edn"]
+  (binding [wrepl.config/*default-base-name* "rest-repl"]
     (apply wrepl.main/-main args)))
