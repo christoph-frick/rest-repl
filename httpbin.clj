@@ -1,3 +1,3 @@
-(cd "https://httpbin.org/get")
+(cd "https://httpbin.org")
 
 (config! :debug true)
