@@ -14,4 +14,3 @@
                                     :class-delimiter [:magenta]
                                     :class-name [:bold :magenta]}}
  :wrepl.relative-clj-http/prompt {}}
-
