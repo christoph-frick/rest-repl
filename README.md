@@ -1,3 +1,11 @@
+Deprecation and replacement
+===========================
+
+All features and more (easy configuration, plugin structure to add
+rebel-readline, pomegranate, ...), ...) now present in
+[`wrepl`](https://github.com/christoph-frick/clj-wrepl/blob/master/doc/rest-repl.md)
+
+      
       _ \  ____|  ___|__ __|   _ \  ____|  _ \  |     
      |   | __|  \___ \   |    |   | __|   |   | |     
      __ <  |          |  |    __ <  |     ___/  |     
